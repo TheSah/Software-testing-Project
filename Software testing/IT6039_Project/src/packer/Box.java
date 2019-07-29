@@ -50,14 +50,10 @@ public class Box {
     }
     
     public double getWeight() {
-        return contents.getWeight();
+        return contents.getTotalWeight();
     }
     
-    public void addProduct(Product product) {
-        if (canFit(product)) {
-            contents.addProduct(product, 1);
-        }
-    }
+
     
     public boolean canFit(Product p) {
         return p.getWeight() < 40;
