@@ -38,21 +38,19 @@ public class Manifest {
     }
     
     public void removeProduct(Product p) {
-        if (quantities.containsKey(p) && quantities.get(p) > 0) {
-            quantities.put(p,quantities.get(p)-1);
-        }
-        if (quantities.get(p) == 0) {
+        if (quantities.containsKey(p) && quantities.get(p) >= 0) {
             quantities.remove(p);
-        }
-        if (quantities.containsKey(p)) {
             byWeight.remove(p);
+        }
+        else {
+            System.out.println("Product doesn't exist");
         }
     }
     
     public double getTotalWeight() {
         double weight = 0;
         for (Product p : quantities.keySet()) {
-            weight = quantities.get(p) * p.getWeight();
+            weight += quantities.get(p) * p.getWeight();
         }
         return weight;
     }
@@ -82,16 +80,27 @@ public class Manifest {
             result.append(quantities.get(p));
             result.append("\n");
         }
-        return result.substring(0, result.length()-1);
+        return result.substring(0);
     }
     
     public boolean hasFragileItems() {
+        boolean f = false;
         for (Product p : quantities.keySet()) {
             if (p.isFragile()) {
-                return true;
+                f = true;
             }
         }
-        return false;
+        return f;
+    }
+    
+    public boolean hasHazardousItems(){
+        boolean h = false;
+        for (Product p : quantities.keySet()){
+            if (p.isHazardous()){
+                h = true;
+            }
+        }
+        return h;
     }
     
 }

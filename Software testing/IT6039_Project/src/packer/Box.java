@@ -17,17 +17,27 @@ public class Box {
         contents = new Manifest();
     }
     
-    public void addProduct(Product product) {
+    public String addProduct(Product product) {
         if (canFit(product)) {
             contents.addProduct(product, 1);
+            return "added";
         }
+        else {
+            return "denied";
+        }
+        
+        
     }
     
     
     
-    public void addProduct(Product product, int quantity) {
-        if (canFit(product,quantity)); {
+    public String addProduct(Product product, int quantity) {
+        if (canFit(product,quantity)) {
             contents.addProduct(product, quantity);
+            return "added";
+        }
+        else {
+            return "denied";
         }
     }
    
@@ -41,6 +51,9 @@ public class Box {
         label.append("\n");
         if (this.isFragile()) {
             label.append("FRAGILE\n");
+        }
+        if (this.isHazardous()){
+            label.append("HAZARDOUS\n");
         }
         return label.toString();
     }
@@ -56,15 +69,15 @@ public class Box {
 
     
     public boolean canFit(Product p) {
-        return p.getWeight() < 40;
+        return (p.getWeight() <= 20) && (this.remainingCapacity() >= p.getWeight());
     }
     
     public boolean canFit(Product p, int quantity) {
-        return (p.getWeight() * quantity) < 40;
+        return ((p.getWeight() * quantity) <= 20) && (this.remainingCapacity() >= (p.getWeight() * quantity));
     }
     
     public double remainingCapacity() {
-        return 40 - this.getWeight();
+        return 20 - this.getWeight();
     }
     
     public boolean isFragile() {
@@ -72,6 +85,6 @@ public class Box {
     }
     
     public boolean isHazardous() {
-        return false;
+        return contents.hasHazardousItems();
     }
 }
