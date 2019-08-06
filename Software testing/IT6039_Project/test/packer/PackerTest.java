@@ -24,7 +24,9 @@ public class PackerTest {
         System.out.println("Testing Packer class...");
     }
      
-     //test if packer can function appropriately
+     /**
+      * Test if packer functions appropriately.
+      */
      @Test
      public void testPacker(){
         System.out.println("Testing testPacker...");

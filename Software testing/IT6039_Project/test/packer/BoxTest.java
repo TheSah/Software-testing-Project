@@ -32,7 +32,7 @@ public class BoxTest {
         System.out.println("Testing Box class...");
     }
     
-    /*
+    /**
         test of canFit and main methods of class
     */
     @Test
@@ -49,7 +49,7 @@ public class BoxTest {
         
     }
     
-    /*
+    /**
     Test to see if adding product works correctly and remaining weight works too
     */
     @Test
@@ -77,7 +77,9 @@ public class BoxTest {
         
     }
     
-    //This is to test the label function
+    /**
+     * This is to test the label function
+    */
     @Test
     public void testLabel(){
         System.out.println("testLabel");

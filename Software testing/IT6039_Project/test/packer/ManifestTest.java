@@ -24,7 +24,9 @@ public class ManifestTest {
         System.out.println("Testing Manifest class...");
     }
     
-    //test how manifest behaves
+    /**
+     * Test the general product test of Manifest
+     */
     @Test
     public void testProducts(){
         System.out.println("Testing testProducts...");
@@ -51,6 +53,9 @@ public class ManifestTest {
         assertEquals(false, manifest.hasFragileItems());
         assertEquals(false, manifest.hasHazardousItems());
     }
+    /**
+     * Test how removing a product behaves 
+     */
     @Test
     public void testRemoveProduct(){
         System.out.println("Testing testRemoveProduct...");
@@ -67,7 +72,9 @@ public class ManifestTest {
         assertEquals(true, manifest.isEmpty());
     }
     
-    //testing manifest converting products to string
+    /**
+     * Test if the string generator in Manifest is sufficient
+     */
     @Test
     public void testToString(){
         System.out.println("Testing testToString...");
